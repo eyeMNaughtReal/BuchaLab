@@ -10,13 +10,7 @@ struct TasteLogRow: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
-            // Common Fields
-            HStack(spacing: 16) {
-                RatingDisplay(label: "Sweetness", value: log.sweetness)
-                RatingDisplay(label: "Tartness", value: log.tartness)
-            }
-            
-            // Conditional Fields based on fermentation stage
+            // Phase-specific information
             switch log.phase {
             case .firstFermentation:
                 if let acidity = log.acidity {
@@ -30,12 +24,6 @@ struct TasteLogRow: View {
                 }
                 
             case .secondFermentation:
-                if let carbonation = log.carbonation {
-                    RatingDisplay(label: "Carbonation", value: carbonation)
-                }
-                if let flavorStrength = log.flavorStrength {
-                    RatingDisplay(label: "Flavor", value: flavorStrength)
-                }
                 if let addedFlavor = log.addedFlavor, !addedFlavor.isEmpty {
                     Text("Flavors: \(addedFlavor)")
                         .font(.subheadline)

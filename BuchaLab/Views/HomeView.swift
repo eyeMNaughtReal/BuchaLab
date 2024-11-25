@@ -288,7 +288,7 @@ struct SCOBYCard: View {
                 onSave: { log in
                     tasteLogs.append(log)
                 },
-                onPhaseChange: nil
+                onPhaseChange: { }
             )
         }
     }
@@ -401,11 +401,11 @@ struct BrewCard: View {
         }
         .sheet(isPresented: $showingTasteLogger) {
             LogTasteView(
-                phase: nil,
+                phase: brewPhase,
                 onSave: { log in
                     tasteLogs.append(log)
                 },
-                onPhaseChange: nil
+                onPhaseChange: { }
             )
         }
     }

@@ -1,5 +1,10 @@
 import Foundation
 
+struct FermentationTargets {
+    var phRange: ClosedRange<Double>?
+    var tempRange: ClosedRange<Double>?
+}
+
 struct Brew: Identifiable {
     let id: UUID
     let name: String
@@ -26,6 +31,9 @@ struct Brew: Identifiable {
     // Monitoring Data
     private(set) var logEntries: [LogEntry]
     private(set) var tasteLogs: [TasteLog]
+    
+    var firstFermentationTargets = FermentationTargets()
+    var secondFermentationTargets = FermentationTargets()
     
     init(
         id: UUID = UUID(),

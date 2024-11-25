@@ -97,7 +97,7 @@ struct LogTemperatureView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Color.buchaLabTheme.background)
-            .navigationTitle("Log Temperature")
+            .navigationTitle("Log Temp")
             .navigationBarTitleDisplayMode(.inline)
             .tint(Color.buchaLabTheme.primary)
             .toolbar {

@@ -38,15 +38,31 @@ struct TasteChartView: View {
                     x: .value("Date", log.timestamp),
                     y: .value("Sweetness", log.sweetness)
                 )
-                .foregroundStyle(by: .value("Metric", "Sweetness"))
+                .foregroundStyle(Color.blue)
+                .interpolationMethod(.catmullRom)
                 
                 LineMark(
                     x: .value("Date", log.timestamp),
                     y: .value("Tartness", log.tartness)
                 )
-                .foregroundStyle(by: .value("Metric", "Tartness"))
+                .foregroundStyle(Color.orange)
+                .interpolationMethod(.catmullRom)
+                
+                PointMark(
+                    x: .value("Date", log.timestamp),
+                    y: .value("Sweetness", log.sweetness)
+                )
+                .foregroundStyle(Color.blue)
+                
+                PointMark(
+                    x: .value("Date", log.timestamp),
+                    y: .value("Tartness", log.tartness)
+                )
+                .foregroundStyle(Color.orange)
             }
         }
+        .chartYScale(domain: 0...5)
+        .chartLegend(position: .bottom)
         .frame(height: 200)
     }
 }

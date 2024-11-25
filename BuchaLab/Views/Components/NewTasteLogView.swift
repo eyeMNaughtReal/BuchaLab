@@ -70,6 +70,8 @@ struct NewTasteLogView: View {
     
     private var firstFermentationSection: some View {
         Section("First Fermentation") {
+            RatingRow(label: "Sweetness", value: $viewModel.sweetness)
+            RatingRow(label: "Tartness", value: $viewModel.tartness)
             Picker("Acidity Level", selection: $viewModel.acidity) {
                 ForEach(TasteLog.AcidityLevel.allCases) { level in
                     Text(level.rawValue).tag(level)
@@ -81,8 +83,8 @@ struct NewTasteLogView: View {
     
     private var secondFermentationSection: some View {
         Section("Second Fermentation") {
-            tasteSlider("Carbonation", value: $viewModel.carbonation)
-            tasteSlider("Flavor Strength", value: $viewModel.flavorStrength)
+            RatingRow(label: "Carbonation", value: $viewModel.carbonation)
+            RatingRow(label: "Flavor Strength", value: $viewModel.flavorStrength)
             TextField("Added Flavors", text: $viewModel.addedFlavor)
             Toggle("Batch Ready?", isOn: $viewModel.batchReady)
         }

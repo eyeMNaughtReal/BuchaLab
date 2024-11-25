@@ -2,32 +2,21 @@ import SwiftUI
 
 struct RatingRow: View {
     let label: String
-    let value: Binding<Int>
+    @Binding var value: Int
     
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack {
             Text(label)
-                .font(.subheadline)
-                .foregroundColor(Color.buchaLabTheme.text)
-            
-            HStack {
-                Text("1")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                Slider(
-                    value: Binding(
-                        get: { Double(value.wrappedValue) },
-                        set: { value.wrappedValue = Int($0) }
-                    ),
-                    in: 1...5,
-                    step: 1
-                )
-                .tint(Color.buchaLabTheme.primary)
-                
-                Text("5")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+            Spacer()
+            HStack(spacing: 4) {
+                ForEach(1...5, id: \.self) { index in
+                    Circle()
+                        .fill(index <= value ? Color.buchaLabTheme.primary : Color.buchaLabTheme.text.opacity(0.3))
+                        .frame(width: 8, height: 8)
+                        .onTapGesture {
+                            value = index
+                        }
+                }
             }
         }
     }
