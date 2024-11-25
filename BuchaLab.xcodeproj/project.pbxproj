@@ -24,25 +24,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6D65319A2CF11DC70059272F /* Brewly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewly.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D6531AA2CF11DCA0059272F /* BrewlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D6531B42CF11DCA0059272F /* BrewlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D65319A2CF11DC70059272F /* BuchaLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuchaLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6531AA2CF11DCA0059272F /* BuchaLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuchaLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6531B42CF11DCA0059272F /* BuchaLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuchaLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6D65319C2CF11DC70059272F /* Brewly */ = {
+		6D65319C2CF11DC70059272F /* BuchaLab */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Brewly;
+			path = BuchaLab;
 			sourceTree = "<group>";
 		};
-		6D6531AD2CF11DCA0059272F /* BrewlyTests */ = {
+		6D6531AD2CF11DCA0059272F /* BuchaLabTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BrewlyTests;
+			path = BuchaLabTests;
 			sourceTree = "<group>";
 		};
-		6D6531B72CF11DCA0059272F /* BrewlyUITests */ = {
+		6D6531B72CF11DCA0059272F /* BuchaLabUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BrewlyUITests;
+			path = BuchaLabUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		6D6531912CF11DC70059272F = {
 			isa = PBXGroup;
 			children = (
-				6D65319C2CF11DC70059272F /* Brewly */,
-				6D6531AD2CF11DCA0059272F /* BrewlyTests */,
-				6D6531B72CF11DCA0059272F /* BrewlyUITests */,
+				6D65319C2CF11DC70059272F /* BuchaLab */,
+				6D6531AD2CF11DCA0059272F /* BuchaLabTests */,
+				6D6531B72CF11DCA0059272F /* BuchaLabUITests */,
 				6D65319B2CF11DC70059272F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		6D65319B2CF11DC70059272F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D65319A2CF11DC70059272F /* Brewly.app */,
-				6D6531AA2CF11DCA0059272F /* BrewlyTests.xctest */,
-				6D6531B42CF11DCA0059272F /* BrewlyUITests.xctest */,
+				6D65319A2CF11DC70059272F /* BuchaLab.app */,
+				6D6531AA2CF11DCA0059272F /* BuchaLabTests.xctest */,
+				6D6531B42CF11DCA0059272F /* BuchaLabUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D6531992CF11DC70059272F /* Brewly */ = {
+		6D6531992CF11DC70059272F /* BuchaLab */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D6531BE2CF11DCA0059272F /* Build configuration list for PBXNativeTarget "Brewly" */;
+			buildConfigurationList = 6D6531BE2CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BuchaLab" */;
 			buildPhases = (
 				6D6531962CF11DC70059272F /* Sources */,
 				6D6531972CF11DC70059272F /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6D65319C2CF11DC70059272F /* Brewly */,
+				6D65319C2CF11DC70059272F /* BuchaLab */,
 			);
-			name = Brewly;
+			name = BuchaLab;
 			packageProductDependencies = (
 			);
 			productName = Brewly;
-			productReference = 6D65319A2CF11DC70059272F /* Brewly.app */;
+			productReference = 6D65319A2CF11DC70059272F /* BuchaLab.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D6531A92CF11DCA0059272F /* BrewlyTests */ = {
+		6D6531A92CF11DCA0059272F /* BuchaLabTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D6531C12CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BrewlyTests" */;
+			buildConfigurationList = 6D6531C12CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BuchaLabTests" */;
 			buildPhases = (
 				6D6531A62CF11DCA0059272F /* Sources */,
 				6D6531A72CF11DCA0059272F /* Frameworks */,
@@ -131,18 +131,18 @@
 				6D6531AC2CF11DCA0059272F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6D6531AD2CF11DCA0059272F /* BrewlyTests */,
+				6D6531AD2CF11DCA0059272F /* BuchaLabTests */,
 			);
-			name = BrewlyTests;
+			name = BuchaLabTests;
 			packageProductDependencies = (
 			);
 			productName = BrewlyTests;
-			productReference = 6D6531AA2CF11DCA0059272F /* BrewlyTests.xctest */;
+			productReference = 6D6531AA2CF11DCA0059272F /* BuchaLabTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6D6531B32CF11DCA0059272F /* BrewlyUITests */ = {
+		6D6531B32CF11DCA0059272F /* BuchaLabUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D6531C42CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BrewlyUITests" */;
+			buildConfigurationList = 6D6531C42CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BuchaLabUITests" */;
 			buildPhases = (
 				6D6531B02CF11DCA0059272F /* Sources */,
 				6D6531B12CF11DCA0059272F /* Frameworks */,
@@ -154,13 +154,13 @@
 				6D6531B62CF11DCA0059272F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6D6531B72CF11DCA0059272F /* BrewlyUITests */,
+				6D6531B72CF11DCA0059272F /* BuchaLabUITests */,
 			);
-			name = BrewlyUITests;
+			name = BuchaLabUITests;
 			packageProductDependencies = (
 			);
 			productName = BrewlyUITests;
-			productReference = 6D6531B42CF11DCA0059272F /* BrewlyUITests.xctest */;
+			productReference = 6D6531B42CF11DCA0059272F /* BuchaLabUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D6531952CF11DC70059272F /* Build configuration list for PBXProject "Brewly" */;
+			buildConfigurationList = 6D6531952CF11DC70059272F /* Build configuration list for PBXProject "BuchaLab" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D6531992CF11DC70059272F /* Brewly */,
-				6D6531A92CF11DCA0059272F /* BrewlyTests */,
-				6D6531B32CF11DCA0059272F /* BrewlyUITests */,
+				6D6531992CF11DC70059272F /* BuchaLab */,
+				6D6531A92CF11DCA0059272F /* BuchaLabTests */,
+				6D6531B32CF11DCA0059272F /* BuchaLabUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		6D6531AC2CF11DCA0059272F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D6531992CF11DC70059272F /* Brewly */;
+			target = 6D6531992CF11DC70059272F /* BuchaLab */;
 			targetProxy = 6D6531AB2CF11DCA0059272F /* PBXContainerItemProxy */;
 		};
 		6D6531B62CF11DCA0059272F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D6531992CF11DC70059272F /* Brewly */;
+			target = 6D6531992CF11DC70059272F /* BuchaLab */;
 			targetProxy = 6D6531B52CF11DCA0059272F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -395,7 +395,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Brewly/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BuchaLab/Preview Content\"";
 				DEVELOPMENT_TEAM = YDBLTKHK3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -413,7 +413,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -424,7 +424,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Brewly/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BuchaLab/Preview Content\"";
 				DEVELOPMENT_TEAM = YDBLTKHK3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -442,7 +442,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -461,7 +461,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brewly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brewly";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuchaLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BuchaLab";
 			};
 			name = Debug;
 		};
@@ -480,7 +480,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brewly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brewly";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuchaLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BuchaLab";
 			};
 			name = Release;
 		};
@@ -521,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D6531952CF11DC70059272F /* Build configuration list for PBXProject "Brewly" */ = {
+		6D6531952CF11DC70059272F /* Build configuration list for PBXProject "BuchaLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D6531BC2CF11DCA0059272F /* Debug */,
@@ -530,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D6531BE2CF11DCA0059272F /* Build configuration list for PBXNativeTarget "Brewly" */ = {
+		6D6531BE2CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BuchaLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D6531BF2CF11DCA0059272F /* Debug */,
@@ -539,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D6531C12CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BrewlyTests" */ = {
+		6D6531C12CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BuchaLabTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D6531C22CF11DCA0059272F /* Debug */,
@@ -548,7 +548,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D6531C42CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BrewlyUITests" */ = {
+		6D6531C42CF11DCA0059272F /* Build configuration list for PBXNativeTarget "BuchaLabUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D6531C52CF11DCA0059272F /* Debug */,

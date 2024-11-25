@@ -1,6 +1,6 @@
 //
-//  BrewlyApp.swift
-//  Brewly
+//  BuchaLabApp.swift
+//  BuchaLab
 //
 //  Created by Mark Conley on 11/22/24.
 //
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct BrewlyApp: App {
+struct BuchaLabApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

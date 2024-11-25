@@ -1,13 +1,13 @@
 //
-//  BrewlyUITestsLaunchTests.swift
-//  BrewlyUITests
+//  BuchaLabUITestsLaunchTests.swift
+//  BuchaLabUITests
 //
 //  Created by Mark Conley on 11/22/24.
 //
 
 import XCTest
 
-final class BrewlyUITestsLaunchTests: XCTestCase {
+final class BuchaLabUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
