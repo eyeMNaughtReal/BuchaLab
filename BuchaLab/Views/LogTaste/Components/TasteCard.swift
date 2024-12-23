@@ -13,7 +13,6 @@ struct TasteCard<Content: View>: View {
         VStack(alignment: .leading, spacing: 16) {
             Text(title)
                 .font(.headline)
-                .foregroundColor(Color.buchaLabTheme.primary)
             content
         }
         .padding()

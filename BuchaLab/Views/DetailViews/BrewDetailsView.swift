@@ -51,7 +51,7 @@ struct BrewDetailsView: View {
                     flavorStrength: nil,
                     addedFlavor: nil,
                     batchReady: nil,
-                    acidityNotes: nil,
+                    //acidityNotes: nil,
                     offNotes: nil,
                     texture: nil,
                     scobyReady: nil
@@ -68,7 +68,7 @@ struct BrewDetailsView: View {
                     flavorStrength: nil,
                     addedFlavor: nil,
                     batchReady: nil,
-                    acidityNotes: nil,
+                    //acidityNotes: nil,
                     offNotes: nil,
                     texture: nil,
                     scobyReady: nil
@@ -99,31 +99,22 @@ struct BrewDetailsView: View {
                 // Quick Action Buttons
                 HStack(spacing: 12) {
                     Button(action: { showingTempLogger = true }) {
-                        Text("Log Temp")
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 12)
-                            .background(Color.orange.opacity(0.2))
-                            .foregroundColor(.orange)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        Label("Log Temperature", systemImage: "thermometer")
                     }
+                    .buttonStyle(.bordered)
+                    .tint(.orange)
                     
                     Button(action: { showingPHLogger = true }) {
-                        Text("Log pH")
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 12)
-                            .background(Color.blue.opacity(0.2))
-                            .foregroundColor(.blue)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        Label("Log pH", systemImage: "drop")
                     }
+                    .buttonStyle(.bordered)
+                    .tint(.blue)
                     
                     Button(action: { showingNewTasteLog = true }) {
-                        Text("Log Taste")
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 12)
-                            .background(Color.green.opacity(0.2))
-                            .foregroundColor(.green)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        Label("Log Taste", systemImage: "cup.and.saucer")
                     }
+                    .buttonStyle(.bordered)
+                    .tint(.green)
                 }
                 .padding(.horizontal)
                 
@@ -167,12 +158,11 @@ struct MetricChartView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(.headline)
-                .foregroundColor(Color.buchaLabTheme.primary)
+                .foregroundColor(.primary)
             
             if data.isEmpty {
                 Text("No data recorded yet")
                     .font(.subheadline)
-                    .foregroundColor(Color.buchaLabTheme.text)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding()
             } else {

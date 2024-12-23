@@ -6,7 +6,7 @@ struct TasteChartView: View {
     @State private var selectedLog: TasteLog?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             headerView
             
             if tasteLogs.isEmpty {
@@ -15,18 +15,19 @@ struct TasteChartView: View {
                 chartView
             }
         }
+        .chartYScale(domain: 0...5)
+        .chartLegend(position: .bottom)
+        .frame(height: 200)
     }
     
     private var headerView: some View {
         Text("Taste Profile")
             .font(.headline)
-            .foregroundColor(Color.buchaLabTheme.primary)
     }
     
     private var emptyStateView: some View {
         Text("No taste logs recorded yet")
             .font(.subheadline)
-            .foregroundColor(Color.buchaLabTheme.text)
             .frame(maxWidth: .infinity, alignment: .center)
             .padding()
     }
@@ -61,9 +62,6 @@ struct TasteChartView: View {
                 .foregroundStyle(Color.orange)
             }
         }
-        .chartYScale(domain: 0...5)
-        .chartLegend(position: .bottom)
-        .frame(height: 200)
     }
 }
 
@@ -81,7 +79,7 @@ struct TasteChartView: View {
             flavorStrength: nil,
             addedFlavor: nil,
             batchReady: nil,
-            acidityNotes: nil,
+            //acidityNotes: nil,
             offNotes: nil,
             texture: nil,
             scobyReady: nil

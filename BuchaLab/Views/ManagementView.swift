@@ -28,7 +28,7 @@ struct SCOBYsSection: View {
                     )))
                 } label: {
                     Text(scoby)
-                        .foregroundColor(Color.buchaLabTheme.text)
+                        .foregroundColor(.primary)
                 }
                 .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                     Button(role: .destructive) {
@@ -40,11 +40,11 @@ struct SCOBYsSection: View {
             }
         } header: {
             Text("SCOBYs")
-                .foregroundColor(Color.buchaLabTheme.text)
+                .foregroundColor(.primary)
                 .fontWeight(.bold)
         } footer: {
             Text("Track the health and creation dates of your SCOBYs")
-                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
+                .foregroundColor(.secondary)
         }
     }
 }
@@ -78,7 +78,7 @@ struct ManagementView: View {
             flavorStrength: nil,
             addedFlavor: nil,
             batchReady: nil,
-            acidityNotes: nil,
+            //acidityNotes: nil,
             offNotes: nil,
             texture: nil,
             scobyReady: nil
@@ -136,7 +136,7 @@ struct ManagementView: View {
                 flavorStrength: nil,
                 addedFlavor: nil,
                 batchReady: nil,
-                acidityNotes: "Good acidity development",
+                //acidityNotes: "Good acidity development",
                 offNotes: "None",
                 texture: "Firm and healthy",
                 scobyReady: true
@@ -153,7 +153,7 @@ struct ManagementView: View {
                 flavorStrength: nil,
                 addedFlavor: nil,
                 batchReady: nil,
-                acidityNotes: "Ideal acidity",
+                //acidityNotes: "Ideal acidity",
                 offNotes: "None",
                 texture: "Thick and healthy",
                 scobyReady: true
@@ -215,7 +215,7 @@ struct ManagementView: View {
                 flavorStrength: nil,
                 addedFlavor: nil,
                 batchReady: nil,
-                acidityNotes: nil,
+                //acidityNotes: nil,
                 offNotes: nil,
                 texture: nil,
                 scobyReady: nil
@@ -232,7 +232,7 @@ struct ManagementView: View {
                 flavorStrength: nil,
                 addedFlavor: nil,
                 batchReady: nil,
-                acidityNotes: nil,
+                //acidityNotes: nil,
                 offNotes: nil,
                 texture: nil,
                 scobyReady: nil
@@ -254,10 +254,19 @@ struct ManagementView: View {
                 BrewsSection(brews: displayedBrews)
                 FlavorsSection(flavors: displayedFlavors)
             }
-            .scrollContentBackground(.hidden)
-            .background(Color.buchaLabTheme.background)
+            .background(.background)
             .navigationTitle("Management")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingNewBrew = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(.primary)
+                    }
+                }
+            }
             .sheet(isPresented: $showingNewSCOBY) {
                 NewSCOBYView()
             }
@@ -287,12 +296,12 @@ struct BrewsSection: View {
                     )))
                 } label: {
                     Text(brew)
-                        .foregroundColor(Color.buchaLabTheme.text)
+                        .foregroundColor(.primary)
                 }
             }
         } header: {
             Text("Brews")
-                .foregroundColor(Color.buchaLabTheme.text)
+                .foregroundColor(.primary)
                 .fontWeight(.bold)
         }
     }
@@ -305,11 +314,11 @@ struct FlavorsSection: View {
         Section {
             ForEach(flavors, id: \.self) { flavor in
                 Text(flavor)
-                    .foregroundColor(Color.buchaLabTheme.text)
+                    .foregroundColor(.primary)
             }
         } header: {
             Text("Flavors")
-                .foregroundColor(Color.buchaLabTheme.text)
+                .foregroundColor(.primary)
                 .fontWeight(.bold)
         }
     }

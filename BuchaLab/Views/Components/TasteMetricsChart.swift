@@ -11,7 +11,7 @@ struct TasteMetricChart: View {
         if logs.isEmpty {
             Text("No data recorded yet")
                 .font(.subheadline)
-                .foregroundColor(Color.buchaLabTheme.text)
+                .foregroundColor(.secondary)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding()
         } else {

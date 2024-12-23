@@ -3,62 +3,38 @@ import Foundation
 
 struct LogPHView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var phValue: Double = 3.0
-    @State private var notes: String = ""
-    let onSave: (LogEntry) -> Void
-    
-    private let phValues: [Double] = stride(from: 2.5, through: 7.0, by: 0.1).map { 
-        Double(round(10 * $0) / 10)
-    }
+    @State private var pH: Double = 3.2
+    var onSave: (LogEntry) -> Void
     
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    Picker("pH Level", selection: $phValue) {
-                        ForEach(phValues, id: \.self) { value in
-                            Text(String(format: "%.1f", value))
-                                .tag(value)
-                        }
-                    }
-                } header: {
-                    Text("pH Reading")
-                } footer: {
-                    Text("Select the pH level measured from your brew")
-                }
+            VStack {
+                Text("\(pH, specifier: "%.1f")")
+                    .font(.system(size: 72, weight: .light))
+                    .foregroundColor(.primary)
+                    .padding()
                 
-                Section {
-                    TextEditor(text: $notes)
-                        .frame(minHeight: 100)
-                } header: {
-                    Text("Notes")
-                } footer: {
-                    Text("Add any additional observations (optional)")
-                }
+                Slider(value: $pH, in: 2.5...4.5)
+                    .tint(.blue)
+                    .padding(.horizontal)
+                
+                Text("Recommended: 2.5-3.5")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
-            .scrollContentBackground(.hidden)
-            .background(Color.buchaLabTheme.background)
             .navigationTitle("Log pH")
             .navigationBarTitleDisplayMode(.inline)
-            .tint(Color.buchaLabTheme.primary)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        onSave(LogEntry(
-                            timestamp: Date(),
-                            type: .ph,
-                            value: phValue,
-                            notes: notes.isEmpty ? nil : notes
-                        ))
+                        onSave(LogEntry(type: .ph, value: pH))
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
                 }
             }
         }
@@ -67,57 +43,38 @@ struct LogPHView: View {
 
 struct LogTemperatureView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var tempValue: Double = 70.0
-    @State private var tempString: String = "70.0"
-    let onSave: (LogEntry) -> Void
+    @State private var temperature: Double = 72.0
+    var onSave: (LogEntry) -> Void
     
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    HStack {
-                        TextField("Temperature", text: $tempString)
-                            .keyboardType(.decimalPad)
-                            .onChange(of: tempString) { oldValue, newValue in
-                                if let value = Double(newValue) {
-                                    tempValue = value
-                                }
-                            }
-                        Spacer()
-                        Stepper("", value: $tempValue, in: 0...100, step: 0.1)
-                            .onChange(of: tempValue) { oldValue, newValue in
-                                tempString = String(format: "%.1f", newValue)
-                            }
-                    }
-                } header: {
-                    Text("Temperature Reading")
-                } footer: {
-                    Text("Enter the temperature measured from your brew")
-                }
+            VStack {
+                Text("\(temperature, specifier: "%.1f")°F")
+                    .font(.system(size: 72, weight: .light))
+                    .foregroundColor(.primary)
+                    .padding()
+                
+                Slider(value: $temperature, in: 60...85)
+                    .tint(.blue)
+                    .padding(.horizontal)
+                
+                Text("Recommended: 68-78°F")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
-            .scrollContentBackground(.hidden)
-            .background(Color.buchaLabTheme.background)
-            .navigationTitle("Log Temp")
+            .navigationTitle("Log Temperature")
             .navigationBarTitleDisplayMode(.inline)
-            .tint(Color.buchaLabTheme.primary)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        onSave(LogEntry(
-                            timestamp: Date(),
-                            type: .temperature,
-                            value: tempValue,
-                            notes: ""
-                        ))
+                        onSave(LogEntry(type: .temperature, value: temperature))
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
                 }
             }
         }

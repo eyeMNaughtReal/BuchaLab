@@ -17,7 +17,7 @@ class LogTasteViewModel: ObservableObject {
     @Published var batchReady = false
     
     // SCOBY fields
-    @Published var acidityNotes = ""
+    //@Published var acidity: TasteLog.AcidityLevel = .balanced
     @Published var offNotes = ""
     @Published var texture = ""
     @Published var scobyReady = false
@@ -38,7 +38,7 @@ class LogTasteViewModel: ObservableObject {
             addedFlavor: phase == .secondFermentation && !addedFlavor.isEmpty ? addedFlavor : nil,
             batchReady: phase == .secondFermentation ? batchReady : nil,
             // SCOBY
-            acidityNotes: phase == .scoby && !acidityNotes.isEmpty ? acidityNotes : nil,
+            //acidityNotes: phase == .scoby && !acidityNotes.isEmpty ? acidityNotes : nil,
             offNotes: phase == .scoby && !offNotes.isEmpty ? offNotes : nil,
             texture: phase == .scoby && !texture.isEmpty ? texture : nil,
             scobyReady: phase == .scoby ? scobyReady : nil
@@ -55,7 +55,7 @@ class LogTasteViewModel: ObservableObject {
         flavorStrength = 3
         addedFlavor = ""
         batchReady = false
-        acidityNotes = ""
+        //acidityNotes = ""
         offNotes = ""
         texture = ""
         scobyReady = false

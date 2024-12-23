@@ -20,9 +20,9 @@ struct TasteLog: Identifiable {
     let tartness: Int // 1-5 scale
     let comments: String?
     let phase: FermentationPhase
-    
-    // First Fermentation specific fields
     let acidity: AcidityLevel?
+    
+    // First Fermentation specific field
     let readyForBottling: Bool?
     
     // Second Fermentation specific fields
@@ -32,7 +32,7 @@ struct TasteLog: Identifiable {
     let batchReady: Bool?
     
     // SCOBY specific fields
-    let acidityNotes: String?
+    //let acidityNotes: String?
     let offNotes: String?
     let texture: String?
     let scobyReady: Bool?

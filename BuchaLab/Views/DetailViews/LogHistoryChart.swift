@@ -12,15 +12,20 @@ struct LogHistoryChart: View {
                     x: .value("Time", entry.timestamp),
                     y: .value(type == .ph ? "pH" : "Temperature", entry.value)
                 )
-                .foregroundStyle(type == .ph ? Color.buchaLabTheme.primary : .blue)
+                .foregroundStyle(by: .value("Measurement", type == .ph ? "pH" : "Temperature"))
+                .foregroundStyle(type == .ph ? Color.purple : .blue)
                 
                 PointMark(
                     x: .value("Time", entry.timestamp),
                     y: .value(type == .ph ? "pH" : "Temperature", entry.value)
                 )
-                .foregroundStyle(type == .ph ? Color.buchaLabTheme.primary : .blue)
+                .foregroundStyle(by: .value("Measurement", type == .ph ? "pH" : "Temperature"))
             }
         }
+        .chartForegroundStyleScale([
+            "pH": Color.purple,
+            "Temperature": Color.blue
+        ])
         .chartYScale(domain: type == .ph ? 2.5...7.0 : 60...85)
         .chartXAxis {
             AxisMarks(values: .automatic) { _ in

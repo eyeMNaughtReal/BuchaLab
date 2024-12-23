@@ -8,11 +8,10 @@ struct RatingRow: View {
         HStack {
             Text(label)
             Spacer()
-            HStack(spacing: 4) {
+            HStack(spacing: 8) {
                 ForEach(1...5, id: \.self) { index in
-                    Circle()
-                        .fill(index <= value ? Color.buchaLabTheme.primary : Color.buchaLabTheme.text.opacity(0.3))
-                        .frame(width: 8, height: 8)
+                    Image(systemName: index <= value ? "star.fill" : "star")
+                        .foregroundColor(index <= value ? .yellow : .gray)
                         .onTapGesture {
                             value = index
                         }

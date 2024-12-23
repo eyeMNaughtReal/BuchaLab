@@ -45,7 +45,7 @@ struct NewSCOBYView: View {
                 notesSection
             }
             .scrollContentBackground(.hidden)
-            .background(Color.buchaLabTheme.background)
+            .background(.background)
             .navigationTitle("New SCOBY")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -53,7 +53,7 @@ struct NewSCOBYView: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
+                    .foregroundColor(.primary)
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -61,7 +61,7 @@ struct NewSCOBYView: View {
                         // TODO: Create new SCOBY
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
+                    .foregroundColor(.primary)
                     .disabled(scobyName.isEmpty)
                 }
             }
@@ -93,7 +93,7 @@ extension NewSCOBYView {
                 Text("• Breathable cloth or coffee filter")
                 Text("• Rubber band")
             }
-            .foregroundColor(Color.buchaLabTheme.text)
+            .foregroundColor(.primary)
         } header: {
             Text("Required Tools")
         }

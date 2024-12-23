@@ -52,11 +52,10 @@ struct FirstFermentationInstructionsView: View {
                     Group {
                         Text("• Should be between 3.5 and 4.5")
                             .font(.subheadline)
-                            .foregroundColor(Color.buchaLabTheme.text)
                             .padding(.leading, 32)
                         Text("• If above 4.5, add more starter tea")
                             .font(.subheadline)
-                            .foregroundColor(Color.buchaLabTheme.text)
+                            .foregroundColor(.primary)
                             .padding(.leading, 32)
                     }
                     .padding(.top, -16) // Adjust spacing between header and bullet points
@@ -78,60 +77,60 @@ struct FirstFermentationInstructionsView: View {
                     // Updated Daily Monitoring section
                     Text("Daily Monitoring:")
                         .font(.headline)
-                        .foregroundColor(Color.buchaLabTheme.primary)
+                        .foregroundColor(.primary)
                     
                     Group {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Temperature:")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                             Text("Check daily with thermometer")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                             Text("Below 75°F: Use heating mat or move to warmer spot")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                             Text("Above 85°F: Move to cooler area")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text("pH Levels:")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                             Text("Day 1: Ensure pH is below 4.5")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                             Text("Day 3: Check again")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                             Text("Continue checking every few days (maintain 2.5-4.0)")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                         }
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Taste Testing:")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                             Text("Start tasting after Day 5-7")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                             Text("Too sweet? Let it ferment longer")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                             Text("Too tart? It may be over-fermented")
                                 .font(.subheadline)
-                                .foregroundColor(Color.buchaLabTheme.text)
+                                .foregroundColor(.primary)
                                 .padding(.leading)
                         }
                     }
@@ -155,11 +154,11 @@ struct FirstFermentationInstructionsView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(.headline)
-                .foregroundColor(Color.buchaLabTheme.primary)
+                .foregroundColor(.primary)
             ForEach(steps, id: \.self) { step in
                 Text("• \(step)")
                     .font(.subheadline)
-                    .foregroundColor(Color.buchaLabTheme.text)
+                    .foregroundColor(.primary)
             }
         }
     }

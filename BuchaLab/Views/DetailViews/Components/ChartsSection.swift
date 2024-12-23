@@ -4,6 +4,19 @@ import Charts
 struct ChartsSection: View {
     let logEntries: [LogEntry]
     let tasteLogs: [TasteLog]
+    @State private var selectedMetric: Metric = .ph
+    
+    private enum Metric {
+        case ph
+        case temperature
+        
+        var title: String {
+            switch self {
+            case .ph: return "pH History"
+            case .temperature: return "Temperature History"
+            }
+        }
+    }
     
     private var phEntries: [LogEntry] {
         logEntries.filter { $0.type == .ph }
@@ -15,14 +28,24 @@ struct ChartsSection: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            // pH Chart
-            chartCard("pH History") {
-                LogHistoryChart(entries: phEntries, type: .ph)
-            }
-            
-            // Temperature Chart
-            chartCard("Temperature History") {
-                LogHistoryChart(entries: tempEntries, type: .temperature)
+            // pH/Temperature Chart Section
+            chartCard {
+                VStack {
+                    Picker("Metric", selection: $selectedMetric) {
+                        Text("pH").tag(Metric.ph)
+                        Text("Temperature").tag(Metric.temperature)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    
+                    if selectedMetric == .ph {
+                        LogHistoryChart(entries: phEntries, type: .ph)
+                            .frame(height: 200)
+                    } else {
+                        LogHistoryChart(entries: tempEntries, type: .temperature)
+                            .frame(height: 200)
+                    }
+                }
             }
             
             // Sweetness Chart
@@ -33,6 +56,7 @@ struct ChartsSection: View {
                     getValue: { $0.sweetness },
                     color: .blue
                 )
+                .frame(height: 200)
             }
             
             // Tartness Chart
@@ -43,6 +67,7 @@ struct ChartsSection: View {
                     getValue: { $0.tartness },
                     color: .orange
                 )
+                .frame(height: 200)
             }
             
             // Carbonation Chart (if 2F logs exist)
@@ -54,6 +79,7 @@ struct ChartsSection: View {
                         getValue: { $0.carbonation ?? 0 },
                         color: .purple
                     )
+                    .frame(height: 200)
                 }
             }
             
@@ -66,6 +92,7 @@ struct ChartsSection: View {
                         getValue: { $0.flavorStrength ?? 0 },
                         color: .green
                     )
+                    .frame(height: 200)
                 }
             }
             
@@ -78,17 +105,20 @@ struct ChartsSection: View {
                 }
             }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 16)
     }
     
-    private func chartCard<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(Color.buchaLabTheme.primary)
+    private func chartCard<Content: View>(_ title: String? = nil, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if let title {
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+            }
             content()
         }
-        .padding()
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.white)

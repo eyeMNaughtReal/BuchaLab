@@ -13,10 +13,7 @@ struct TasteLogRow: View {
             // Phase-specific information
             switch log.phase {
             case .firstFermentation:
-                if let acidity = log.acidity {
-                    Text("Acidity: \(acidity.rawValue)")
-                        .font(.subheadline)
-                }
+
                 if let readyForBottling = log.readyForBottling {
                     Text(readyForBottling ? "Ready for Bottling" : "Not Ready for Bottling")
                         .font(.subheadline)
@@ -35,10 +32,7 @@ struct TasteLogRow: View {
                 }
                 
             case .scoby:
-                if let acidityNotes = log.acidityNotes, !acidityNotes.isEmpty {
-                    Text("Acidity Notes: \(acidityNotes)")
-                        .font(.subheadline)
-                }
+
                 if let offNotes = log.offNotes, !offNotes.isEmpty {
                     Text("Off Notes: \(offNotes)")
                         .font(.subheadline)
@@ -51,6 +45,10 @@ struct TasteLogRow: View {
                     Text(scobyReady ? "SCOBY Ready" : "Still Developing")
                         .font(.subheadline)
                         .foregroundColor(scobyReady ? .green : .orange)
+                }
+                if let acidity = log.acidity {
+                    Text("Acidity: \(acidity.rawValue)")
+                        .font(.subheadline)
                 }
                 
             case .completed:

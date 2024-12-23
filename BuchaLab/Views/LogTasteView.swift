@@ -76,7 +76,11 @@ struct LogTasteView: View {
     
     private var scobySection: some View {
         Section("SCOBY Health") {
-            TextField("Acidity Notes", text: $viewModel.acidityNotes)
+            Picker("Acidity Level", selection: $viewModel.acidity) {
+                ForEach(TasteLog.AcidityLevel.allCases) { level in
+                    Text(level.rawValue).tag(level)
+                }
+            }
             TextField("Off Notes", text: $viewModel.offNotes)
             TextField("Texture", text: $viewModel.texture)
             Toggle("SCOBY Ready?", isOn: $viewModel.scobyReady)

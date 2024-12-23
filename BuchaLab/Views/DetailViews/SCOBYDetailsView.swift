@@ -49,7 +49,7 @@ struct SCOBYDetailsView: View {
                     flavorStrength: nil,
                     addedFlavor: nil,
                     batchReady: nil,
-                    acidityNotes: "Good acidity",
+                    //acidityNotes: "Good acidity",
                     offNotes: "None",
                     texture: "Firm",
                     scobyReady: true
@@ -66,7 +66,7 @@ struct SCOBYDetailsView: View {
                     flavorStrength: nil,
                     addedFlavor: nil,
                     batchReady: nil,
-                    acidityNotes: "Ideal",
+                    //acidityNotes: "Ideal",
                     offNotes: "None",
                     texture: "Thick",
                     scobyReady: true

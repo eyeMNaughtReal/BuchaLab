@@ -14,7 +14,7 @@ struct PhaseTransitionView: View {
             Form {
                 Section {
                     Text("Before moving to Second Fermentation (2F), let's verify your brew is ready.")
-                        .foregroundColor(Color.buchaLabTheme.text)
+                        .foregroundColor(.primary)
                 } header: {
                     Text("Transition to 2F")
                 }
@@ -72,18 +72,18 @@ struct PhaseTransitionView: View {
                 } footer: {
                     if !phChecked || !tasteChecked {
                         Text("Complete the checks above before confirming")
-                            .foregroundColor(.red)
+                            .foregroundStyle(.secondary)
                     } else if currentPh > 3.5 {
                         Text("pH is too high for 2F. Consider fermenting longer")
-                            .foregroundColor(.red)
+                            .foregroundStyle(.red)
                     } else {
                         Text("Your brew appears ready for 2F!")
-                            .foregroundColor(.green)
+                            .foregroundStyle(.green)
                     }
                 }
             }
             .scrollContentBackground(.hidden)
-            .background(Color.buchaLabTheme.background)
+            .background(.background)
             .navigationTitle("1F → 2F")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

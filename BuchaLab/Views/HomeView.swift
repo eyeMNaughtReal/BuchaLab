@@ -4,13 +4,6 @@
 //
 //  Created by Mark Conley on 11/23/24.
 //
-//import SwiftUI
-
-//struct HomeScreen: View {
-//    var body: some View {
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//    }
-//}
 
 import SwiftUI
 
@@ -40,12 +33,11 @@ struct HomeView: View {
                     Label("Archive", systemImage: "archivebox.fill")
                 }
         }
-        .tint(Color.buchaLabTheme.primary)
+        .tint(.blue)
         .onAppear(perform: configureTabBar)
         .background(
-            Color.buchaLabTheme.surface
-                .padding(.top, 8)
-                .ignoresSafeArea(edges: .bottom)
+            Color(.systemBackground)
+                .ignoresSafeArea()
         )
         .sheet(isPresented: $showingSettings) {
             SettingsView()
@@ -54,7 +46,6 @@ struct HomeView: View {
     
     private func configureTabBar() {
         let appearance = UITabBarAppearance()
-        appearance.backgroundColor = UIColor(Color.buchaLabTheme.surface)
         appearance.backgroundEffect = nil
         appearance.shadowColor = nil
         
@@ -63,7 +54,6 @@ struct HomeView: View {
         
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
-        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.buchaLabTheme.text.opacity(0.7))
     }
 }
 
@@ -76,25 +66,18 @@ struct HomeContentView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     // SCOBYs Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("SCOBYs")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.buchaLabTheme.text)
-                            .padding(.horizontal)
-                            .padding(.top, 20)
-                        
-                        VStack(spacing: 12) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
                             SCOBYCard(
                                 scobyName: "Hotel SCOBY",
-                                daysActive: 45,
-                                currentTemp: 72,
+                                daysActive: 1,
+                                currentTemp: 72.3,
                                 currentPH: 3.2
                             )
                             SCOBYCard(
                                 scobyName: "New SCOBY",
                                 daysActive: 12,
-                                currentTemp: 71,
+                                currentTemp: 71.5,
                                 currentPH: 3.0
                             )
                         }
@@ -103,30 +86,21 @@ struct HomeContentView: View {
                     .padding(.bottom, 24)
                     
                     // Active Brews Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Active Brews")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.buchaLabTheme.text)
-                            .padding(.horizontal)
-                            .padding(.top, 20)
-                        
-                        VStack(spacing: 12) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
                             BrewCard(
                                 brewName: "First Fermentation Batch",
                                 daysInPhase: 3,
                                 brewPhase: .firstFermentation,
-                                currentTemp: 72,
-                                currentPH: 3.2,
-                                flavors: nil
+                                currentTemp: 72.0,
+                                currentPH: 3.2
                             )
                             BrewCard(
                                 brewName: "Very Berry",
                                 daysInPhase: 5,
                                 brewPhase: .secondFermentation,
-                                currentTemp: 70,
-                                currentPH: 3.1,
-                                flavors: ["Strawberry", "Raspberry", "Blueberry"]
+                                currentTemp: 70.4,
+                                currentPH: 3.1
                             )
                         }
                         .padding(.horizontal)
@@ -135,14 +109,9 @@ struct HomeContentView: View {
                 }
                 .padding(.vertical)
             }
-            .background(Color.buchaLabTheme.background)
+            .background(.background)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("BuchaLab")
-                        .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.white)
-                }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 16) {
@@ -166,7 +135,7 @@ struct HomeContentView: View {
                     }
                 }
             }
-            .toolbarBackground(Color.buchaLabTheme.primary, for: .navigationBar)
+            .toolbarBackground(.blue, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .sheet(isPresented: $showingSettings) {
                 SettingsView()
@@ -190,223 +159,6 @@ struct HomeContentView: View {
             } message: {
                 Text("What would you like to create?")
             }
-        }
-    }
-}
-
-struct SCOBYCard: View {
-    var scobyName: String
-    var daysActive: Int
-    @State var currentTemp: Double
-    @State var currentPH: Double
-    @State private var showingPHLogger = false
-    @State private var showingTempLogger = false
-    @State private var showingTasteLogger = false
-    @State private var logEntries: [LogEntry] = []
-    @State private var tasteLogs: [TasteLog] = []
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .top, spacing: 16) {
-                // Left Side - SCOBY Info
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(scobyName)
-                        .font(.headline)
-                        .foregroundColor(Color.buchaLabTheme.text)
-                    
-                    HStack {
-                        Image(systemName: "calendar")
-                            .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                        Text("\(daysActive) Days Active")
-                            .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                    }
-                    .font(.subheadline)
-                    
-                    HStack(spacing: 16) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "thermometer")
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                            Text(String(format: "%.0f°", currentTemp))
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                        }
-                        
-                        HStack(spacing: 4) {
-                            Image(systemName: "drop.fill")
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                            Text(String(format: "%.1f", currentPH))
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                        }
-                    }
-                    .font(.subheadline)
-                }
-                
-                Spacer()
-                
-                // Right Side - Quick Actions
-                VStack(spacing: 2) {
-                    QuickActionButton(
-                        label: "Log Temp",
-                        color: .blue
-                    ) {
-                        showingTempLogger = true
-                    }
-                    
-                    QuickActionButton(
-                        label: "Log pH",
-                        color: .indigo
-                    ) {
-                        showingPHLogger = true
-                    }
-                    
-                    QuickActionButton(
-                        label: "Log Taste",
-                        color: .orange
-                    ) {
-                        showingTasteLogger = true
-                    }
-                }
-            }
-            .padding()
-        }
-        .background(Color.white.opacity(0.8))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .sheet(isPresented: $showingPHLogger) {
-            LogPHView { entry in
-                logEntries.append(entry)
-                currentPH = entry.value
-            }
-        }
-        .sheet(isPresented: $showingTempLogger) {
-            LogTemperatureView { entry in
-                logEntries.append(entry)
-                currentTemp = entry.value
-            }
-        }
-        .sheet(isPresented: $showingTasteLogger) {
-            LogTasteView(
-                phase: nil,
-                onSave: { log in
-                    tasteLogs.append(log)
-                },
-                onPhaseChange: { }
-            )
-        }
-    }
-}
-
-struct BrewCard: View {
-    var brewName: String
-    var daysInPhase: Int
-    @State var brewPhase: FermentationPhase
-    @State var currentTemp: Double
-    @State var currentPH: Double
-    var flavors: [String]?
-    @State private var showingPHLogger = false
-    @State private var showingTempLogger = false
-    @State private var showingTasteLogger = false
-    @State private var logEntries: [LogEntry] = []
-    @State private var tasteLogs: [TasteLog] = []
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            // Top Section
-            HStack(alignment: .top, spacing: 16) {
-                // Left Side - Brew Info
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(brewName)
-                        .font(.headline)
-                        .foregroundColor(Color.buchaLabTheme.text)
-                    
-                    HStack {
-                        Image(systemName: "calendar")
-                            .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                        Text("\(daysInPhase) Days in \(brewPhase.rawValue)")
-                            .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                    }
-                    .font(.subheadline)
-                    
-                    HStack(spacing: 16) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "thermometer")
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                            Text(String(format: "%.0f°", currentTemp))
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                        }
-                        
-                        HStack(spacing: 4) {
-                            Image(systemName: "drop.fill")
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                            Text(String(format: "%.1f", currentPH))
-                                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                        }
-                    }
-                    .font(.subheadline)
-                }
-                
-                Spacer()
-                
-                // Right Side - Quick Actions
-                VStack(spacing: 2) {
-                    QuickActionButton(
-                        label: "Log Temp",
-                        color: .blue
-                    ) {
-                        showingTempLogger = true
-                    }
-                    
-                    QuickActionButton(
-                        label: "Log pH",
-                        color: .indigo
-                    ) {
-                        showingPHLogger = true
-                    }
-                    
-                    QuickActionButton(
-                        label: "Log Taste",
-                        color: .orange
-                    ) {
-                        showingTasteLogger = true
-                    }
-                }
-            }
-            .padding()
-            
-            // Bottom Section - Flavors (only for 2F)
-            if case .secondFermentation = brewPhase, let flavors = flavors, !flavors.isEmpty {
-                Divider()
-                    .background(Color.buchaLabTheme.text.opacity(0.2))
-                
-                Text(flavors.joined(separator: ", "))
-                    .font(.subheadline)
-                    .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
-                    .italic()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-            }
-        }
-        .background(Color.white.opacity(0.8))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .sheet(isPresented: $showingPHLogger) {
-            LogPHView { entry in
-                logEntries.append(entry)
-                currentPH = entry.value
-            }
-        }
-        .sheet(isPresented: $showingTempLogger) {
-            LogTemperatureView { entry in
-                logEntries.append(entry)
-                currentTemp = entry.value
-            }
-        }
-        .sheet(isPresented: $showingTasteLogger) {
-            LogTasteView(
-                phase: brewPhase,
-                onSave: { log in
-                    tasteLogs.append(log)
-                },
-                onPhaseChange: { }
-            )
         }
     }
 }

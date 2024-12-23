@@ -46,7 +46,7 @@ struct NewBrewView: View {
                 notesSection
             }
             .scrollContentBackground(.hidden)
-            .background(Color.buchaLabTheme.background)
+            .background(.background)
             .navigationTitle("New Brew")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -54,7 +54,7 @@ struct NewBrewView: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
+                    .foregroundColor(.primary)
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -62,7 +62,7 @@ struct NewBrewView: View {
                         // TODO: Create new brew
                         dismiss()
                     }
-                    .foregroundColor(Color.buchaLabTheme.primary)
+                    .foregroundColor(.primary)
                     .disabled(brewName.isEmpty)
                 }
             }
@@ -98,13 +98,13 @@ extension NewBrewView {
     private var toolsSection: some View {
         Section {
             VStack(alignment: .leading, spacing: 8) {
-                Text("• Clean glass jar (1-gallon size)")
-                Text("• Cloth or coffee filter")
+                Text("• Large glass jar (1 gallon)")
+                Text("• Clean cloth cover")
                 Text("• Rubber band")
                 Text("• pH strips (optional)")
                 Text("• Clean straw for tasting")
             }
-            .foregroundColor(Color.buchaLabTheme.text)
+            .foregroundColor(.primary)
         } header: {
             Text("Required Tools")
         }
@@ -169,7 +169,7 @@ extension NewBrewView {
             Text("Ingredients")
         } footer: {
             Text("Use filtered or distilled water, free of chlorine")
-                .foregroundColor(Color.buchaLabTheme.text.opacity(0.7))
+                .foregroundColor(.primary)
         }
     }
     

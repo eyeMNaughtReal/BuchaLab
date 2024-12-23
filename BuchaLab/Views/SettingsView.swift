@@ -19,59 +19,70 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                // Notifications Section
-                Section("Notifications") {
-                    Toggle("pH Level Alerts", isOn: $enablepHAlerts)
-                    Toggle("Temperature Alerts", isOn: $enableTempAlerts)
-                    Toggle("Brew Progress Updates", isOn: $enableBrewAlerts)
-                    Toggle("SCOBY Progress Updates", isOn: $enableScobyAlerts)
-                }
-                
-                // Preferences Section
-                Section("Measurement Units") {
-                    Picker("Temperature", selection: $preferredTemperatureUnit) {
-                        ForEach(temperatureUnits, id: \.self) { unit in
-                            Text(unit)
-                        }
-                    }
-                    
-                    Picker("Volume", selection: $preferredVolumeUnit) {
-                        ForEach(volumeUnits, id: \.self) { unit in
-                            Text(unit)
-                        }
-                    }
-                }
-                
-                // Appearance Section
-                Section("Appearance") {
-                    Picker("Theme", selection: $preferredTheme) {
-                        ForEach(themeOptions, id: \.self) { theme in
-                            Text(theme)
-                        }
-                    }
-                }
-                
-                // About Section
-                Section("About") {
-                    HStack {
-                        Text("Version")
-                        Spacer()
-                        Text("1.0.0")
-                            .foregroundStyle(.secondary)
+                notificationsSection
+                measurementSection
+                appearanceSection
+                aboutSection
+            }
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Done") {
+                        dismiss()
                     }
                 }
             }
-            .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color.buchaLabTheme.primary)
-                    }
+            .background(.background)
+        }
+    }
+    
+    private var notificationsSection: some View {
+        Section {
+            Toggle("pH level alerts", isOn: $enablepHAlerts)
+            Toggle("Temperature alerts", isOn: $enableTempAlerts)
+            Toggle("Brew progress updates", isOn: $enableBrewAlerts)
+            Toggle("SCOBY progress updates", isOn: $enableScobyAlerts)
+        } header: {
+            Text("Notifications")
+        } footer: {
+            Text("Get notified when your brews need attention")
+        }
+    }
+    
+    private var measurementSection: some View {
+        Section("Measurement Units") {
+            Picker("Temperature", selection: $preferredTemperatureUnit) {
+                ForEach(temperatureUnits, id: \.self) { unit in
+                    Text(unit)
                 }
+            }
+            
+            Picker("Volume", selection: $preferredVolumeUnit) {
+                ForEach(volumeUnits, id: \.self) { unit in
+                    Text(unit)
+                }
+            }
+        }
+    }
+    
+    private var appearanceSection: some View {
+        Section("Appearance") {
+            Picker("Theme", selection: $preferredTheme) {
+                ForEach(themeOptions, id: \.self) { theme in
+                    Text(theme)
+                }
+            }
+        }
+    }
+    
+    private var aboutSection: some View {
+        Section("About") {
+            HStack {
+                Text("Version")
+                Spacer()
+                Text("1.0.0")
+                    .foregroundStyle(.secondary)
             }
         }
     }

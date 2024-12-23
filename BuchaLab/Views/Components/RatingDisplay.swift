@@ -12,7 +12,7 @@ struct RatingDisplay: View {
                 ForEach(1...5, id: \.self) { rating in
                     Image(systemName: rating <= value ? "circle.fill" : "circle")
                         .font(.system(size: 8))
-                        .foregroundColor(rating <= value ? Color.buchaLabTheme.primary : Color.buchaLabTheme.text.opacity(0.3))
+                        .foregroundColor(rating <= value ? .primary : .secondary.opacity(0.3))
                 }
             }
         }

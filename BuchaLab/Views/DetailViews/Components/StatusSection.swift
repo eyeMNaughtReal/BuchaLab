@@ -6,9 +6,9 @@ struct StatusSection: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Status")
+            Text("Current Status")
                 .font(.headline)
-                .foregroundColor(Color.buchaLabTheme.primary)
+                .foregroundColor(.primary)
             
             HStack {
                 VStack(alignment: .leading) {
@@ -16,7 +16,7 @@ struct StatusSection: View {
                         .font(.subheadline)
                     Text(phase.rawValue)
                         .font(.title2)
-                        .foregroundColor(Color.buchaLabTheme.primary)
+                        .foregroundColor(.primary)
                 }
                 
                 Spacer()
@@ -26,7 +26,7 @@ struct StatusSection: View {
                         .font(.subheadline)
                     Text("\(days)")
                         .font(.title2)
-                        .foregroundColor(Color.buchaLabTheme.primary)
+                        .foregroundColor(.primary)
                 }
             }
         }
